@@ -10,6 +10,7 @@
 6. [API Endpoints](#api-endpoints)
 7. [User Guide](#user-guide)
 8. [Deployment](#deployment)
+9. [Screenshots](#screenshots)
 
 ## Introduction
 This web application allows users to browse audiobooks, view details, and submit reviews and ratings. It is built using the MERN stack (MongoDB, Express.js, React.js, and Node.js).
@@ -109,4 +110,20 @@ Base URL: `localhost:8080/filter`
     - Crtl + C (Important)
     - Now as the data is setup we can run npm start to start server
 
-   
+## Screenshots
+
+### Home Page
+
+![Home Page](./screenshots/s1.png)
+
+### Audibook Section
+
+![Audibook Section](./screenshots/s2.png)
+
+### Review Section
+
+![Review Section](./screenshots/s3.png)
+
+### Search bar and Filters
+
+![Search bar and Filters](./screenshots/s4.png)
