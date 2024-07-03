@@ -1,4 +1,6 @@
 import fs from "fs";
+import path from 'path';
+import { fileURLToPath } from 'url';
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
@@ -16,7 +18,7 @@ const port = process.env.PORT || 8080;
 const connect = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URL);
-    console.log("initialised connection to db");
+    console.log("initialized connection to db");
   } catch (error) {
     throw error;
   }
@@ -29,12 +31,16 @@ mongoose.connection.on("connected", (err) => {
   console.log("mongodb connected");
 });
 
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const booksFilePath = path.resolve(__dirname, 'books.json'); 
+
+// Read the file contents
 const books = JSON.parse(
-  fs.readFileSync(
-    "/home/yush/Data/My_code/web-deb/react/ultimate/react-code/07-usepopcorn/starter/KUKU/Assignment/api/books.json",
-    "utf-8"
-  )
+  fs.readFileSync(booksFilePath, 'utf-8')
 );
+
 
 const importData = async () => {
   try {

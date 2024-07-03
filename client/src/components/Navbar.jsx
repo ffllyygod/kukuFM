@@ -1,6 +1,14 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useRef } from "react";
 
-export const Navbar = ({ query, setQuery, audioBook, genre, setGenre }) => {
+export const Navbar = ({
+  query,
+  setQuery,
+  genre,
+  setGenre,
+  order,
+  setOrder
+}) => {
   const inputEl = useRef(null);
   useEffect(
     function () {
@@ -44,22 +52,28 @@ export const Navbar = ({ query, setQuery, audioBook, genre, setGenre }) => {
         onChange={(e) => setQuery(e.target.value)}
         ref={inputEl}
       />
-      {/* <p className="num-results">
-        Found <strong>{audioBook?.length}</strong> results
-      </p> */}
-      <select
-        className="genre-selector"
-        value={genre}
-        onChange={(e) => setGenre(e.target.value)}
-      >
-        <option value="">
-          Genre
-        </option>
-        <option value="Romantic">Romantic</option>
-        <option value="Crime">Crime</option>
-        <option value="Horror">Horror</option>
-        <option value="Sensational">Sensational</option>
-      </select>
+      <div className="selectors">
+        <select
+          className="order-selector"
+          value={order}
+          onChange={(e) => setOrder(e.target.value)}
+        >
+          <option value="">Rating ⌄</option>
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
+        </select>
+        <select
+          className="genre-selector"
+          value={genre}
+          onChange={(e) => setGenre(e.target.value)}
+        >
+          <option value="">Genre ⌄</option>
+          <option value="Romantic">Romantic</option>
+          <option value="Crime">Crime</option>
+          <option value="Horror">Horror</option>
+          <option value="Sensational">Sensational</option>
+        </select>
+      </div>
     </nav>
   );
 };

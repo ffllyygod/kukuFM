@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 const WatchedAudioBook = ({watched,setWatched}) => {
   const removeWatchedAudioBook = (bookId) => {
     setWatched(() => watched.filter((book) => book._id !== bookId));

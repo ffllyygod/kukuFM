@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { ToggleButton } from "./ToggleButton";
 export const Box = ({isOpen, setIsOpen, children}) => {
   return (

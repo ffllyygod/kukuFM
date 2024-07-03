@@ -9,9 +9,11 @@ import Error from "./components/Error.jsx";
 import { AudioBookDetails } from "./components/AudiBookDetails.jsx";
 import WatchedAudioBook from "./components/WatchedAudioBook.jsx";
 
+
 export default function App() {
   const [query, setQuery] = useState("");
   const [genre, setGenre] = useState(null);
+  const [order, setOrder] = useState(null);
   const [audioBook, setAudioBook] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -29,7 +31,7 @@ export default function App() {
     },
     [watched]
   );
- 
+
   useEffect(() => {
     const controller = new AbortController();
     const asyncFn = async function () {
@@ -41,9 +43,13 @@ export default function App() {
           api_url = `http://127.0.0.1:8080/filter/genre/${genre}`;
         }
         if (query) {
-          api_url = `http://127.0.0.1:8080/filter/author/${query}`
-        } if(!genre && !query) {
-          api_url = `http://127.0.0.1:8080/book/`
+          api_url = `http://127.0.0.1:8080/filter/author/${query}`;
+        }
+        if (order) {
+          api_url = `http://127.0.0.1:8080/filter/orderBy?order=${order}`;
+        }
+        if (!genre && !query && !order) {
+          api_url = `http://127.0.0.1:8080/book/`;
         }
         const res = await fetch(api_url, {
           signal: controller.signal,
@@ -71,16 +77,17 @@ export default function App() {
     return function () {
       controller.abort();
     };
-  }, [query, genre]);
+  }, [query, genre, order]);
 
   return (
     <>
       <Navbar
         query={query}
         setQuery={setQuery}
-        audioBook={audioBook}
         genre={genre}
         setGenre={setGenre}
+        order={order}
+        setOrder={setOrder}
       />
 
       <main className="main">

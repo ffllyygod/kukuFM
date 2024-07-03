@@ -15,6 +15,9 @@ router.get("/:id", getSingleBook);
 //get all products
 router.get("/", getAllBooks);
 
+// to get asc desc order
+// router.get("/orderBy", getBooksByRating);
+
 
 
 export default router;

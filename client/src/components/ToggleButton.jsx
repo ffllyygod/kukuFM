@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 export const ToggleButton = ({isOpen,setIsOpen}) => {
   return (
     <button
