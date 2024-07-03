@@ -1,0 +1,28 @@
+# Dependencies
+/client/node_modules
+/api/node_modules
+
+# Logs
+*.log
+
+# Build output
+/client/build
+/api/dist
+
+# Environment variables
+# Uncomment the next line if you want to ignore .env files
+# *.env
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Editor directories and files
+.idea
+.vscode
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+*.temp
