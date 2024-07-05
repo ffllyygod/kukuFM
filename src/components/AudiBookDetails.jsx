@@ -26,11 +26,11 @@ export const AudioBookDetails = ({
     runtime,
     noOfEpisodes,
   } = audioBook;
-
+  const base_URL = 'https://kukufm-41dv.onrender.com';
   useEffect(() => {
     const asyncFn = async function () {
       setIsLoading(true);
-      const res = await fetch(`http://127.0.0.1:8080/book/${selectedId}`);
+      const res = await fetch(`${base_URL}/book/${selectedId}`);
       if (!res.ok) throw new Error("Something went wrong!!");
       const data = await res.json();
       if (data.Response === "False") throw new Error("Movie not found");
