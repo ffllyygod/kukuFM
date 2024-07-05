@@ -24,7 +24,7 @@ export default function App() {
     const storedAudioBook = localStorage.getItem("watched");
     return storedAudioBook ? JSON.parse(storedAudioBook) : [];
   });
-
+  const base_URL = 'https://kukufm-41dv.onrender.com';
   useEffect(
     function () {
       localStorage.setItem("watched", JSON.stringify(watched));
@@ -40,16 +40,16 @@ export default function App() {
         setError("");
         let api_url;
         if (genre) {
-          api_url = `http://127.0.0.1:8080/filter/genre/${genre}`;
+          api_url = `${base_URL}/filter/genre/${genre}`;
         }
         if (query) {
-          api_url = `http://127.0.0.1:8080/filter/author/${query}`;
+          api_url = `${base_URL}/filter/author/${query}`;
         }
         if (order) {
-          api_url = `http://127.0.0.1:8080/filter/orderBy?order=${order}`;
+          api_url = `${base_URL}/filter/orderBy?order=${order}`;
         }
         if (!genre && !query && !order) {
-          api_url = `http://127.0.0.1:8080/book/`;
+          api_url = `${base_URL}/book/`;
         }
         const res = await fetch(api_url, {
           signal: controller.signal,
