@@ -14,12 +14,14 @@ const Reviews = ({ reviews, id, setFlag, flag, watched, setWatched }) => {
     },
   });
   const isWatched = watched.map((book) => book._id).includes(id);
+  // const base_URL = 'https://kukufm-41dv.onrender.com';
+  const base_URL = 'http://127.0.0.1:8080'
   // const watchedUserRating = watched.find(
   //   (book) => book._id === id
   // )?.userRating;
 
   const asyncFn = async function () {
-    const res = await fetch(`http://127.0.0.1:8080/book/${id}`);
+    const res = await fetch(`${base_URL}/book/${id}`);
     if (!res.ok) throw new Error("Something went wrong!!");
     const data = await res.json();
     if (data.Response === "False") throw new Error("Movie not found");
@@ -40,7 +42,7 @@ const Reviews = ({ reviews, id, setFlag, flag, watched, setWatched }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://127.0.0.1:8080/book/review", newReview);
+      await axios.post(`${base_URL}/book/review`, newReview);
       await asyncFn();
       setRating(0);
       setNewReview({

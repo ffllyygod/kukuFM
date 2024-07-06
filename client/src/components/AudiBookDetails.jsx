@@ -4,16 +4,13 @@ import { useEffect, useState } from "react";
 
 import { Loader } from "./Loader";
 import Reviews from "./Reviews";
+import { useAppContext } from "../context/AppContext";
 
-export const AudioBookDetails = ({
-  selectedId,
-  setSelectedId,
-  watched,
-  setWatched,
-}) => {
+export const AudioBookDetails = () => {
   const [audioBook, setAudioBook] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [flag, setFlag] = useState(true);
+  const { selectedId, setSelectedId, watched, setWatched } = useAppContext();
   const {
     _id,
     title,
@@ -26,11 +23,12 @@ export const AudioBookDetails = ({
     runtime,
     noOfEpisodes,
   } = audioBook;
-
+  // const base_URL = 'https://kukufm-41dv.onrender.com';
+  const base_URL = "http://127.0.0.1:8080";
   useEffect(() => {
     const asyncFn = async function () {
       setIsLoading(true);
-      const res = await fetch(`http://127.0.0.1:8080/book/${selectedId}`);
+      const res = await fetch(`${base_URL}/book/${selectedId}`);
       if (!res.ok) throw new Error("Something went wrong!!");
       const data = await res.json();
       if (data.Response === "False") throw new Error("Movie not found");

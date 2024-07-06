@@ -33,9 +33,7 @@ export const createReview = async (req, res, next) => {
 export const deleteBook = async (req, res, next) => {
     try {
         const book = await Book.findById(req.params.id);
-        //use deleteone
         await book.deleteOne();
-        
         res.status(200).json("Book deleted");
     }
     catch (error) {
