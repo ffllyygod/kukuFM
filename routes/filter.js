@@ -1,5 +1,5 @@
 import express from 'express';
-import { getBooksByAuthor, getBooksByGenre, getBooksByRating} from '../controllers/filter.js';
+import { getBooksByAuthor, getBooksByFilter, getBooksByGenre, getBooksByRating} from '../controllers/filter.js';
 
 const router = express.Router();
 
@@ -10,6 +10,6 @@ router.get("/genre/:genre", getBooksByGenre);
 
 router.get("/orderBy", getBooksByRating);
 
-
+router.get("/", getBooksByFilter)
 
 export default router;
