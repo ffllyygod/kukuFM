@@ -1,14 +1,8 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useRef } from "react";
-
-export const Navbar = ({
-  query,
-  setQuery,
-  genre,
-  setGenre,
-  order,
-  setOrder
-}) => {
+import { useAppContext } from "../context/AppContext";
+export const Navbar = () => {
+  const {query, setQuery, genre, setGenre, order, setOrder} = useAppContext();
   const inputEl = useRef(null);
   useEffect(
     function () {
@@ -24,9 +18,14 @@ export const Navbar = ({
     },
     [setQuery]
   );
+
+  const handleRefresh = () => {
+    window.location.reload();
+  };
+  
   return (
     <nav className="nav-bar">
-      <div className="logo">
+      <div className="logo" onClick={handleRefresh} style={{ cursor: 'pointer' }}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 112 32"

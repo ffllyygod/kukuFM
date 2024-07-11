@@ -1,5 +1,8 @@
+import { useAppContext } from "../context/AppContext";
+
 /* eslint-disable react/prop-types */
-export const AudioBookList = ({ audioBook, setSelectedId, selectedId }) => {
+export const AudioBookList = () => {
+  const {audioBook,selectedId,setSelectedId} = useAppContext();
   const handleSelectedId = (id) => {
     // console.log(id);
     if (selectedId === id) {

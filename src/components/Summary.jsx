@@ -1,9 +1,13 @@
 /* eslint-disable react/prop-types */
+
+import { useAppContext } from "../context/AppContext";
+
 /* eslint-disable no-unused-vars */
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
-export const Summary = ({ watched }) => {
+export const Summary = () => {
+  const {watched} = useAppContext();
   const avgUserRating = average(watched.map((movie) => movie.userRating));
   return (
     <div className="summary">

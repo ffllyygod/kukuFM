@@ -1,5 +1,8 @@
+import { useAppContext } from "../context/AppContext";
+
 /* eslint-disable react/prop-types */
-const WatchedAudioBook = ({watched,setWatched}) => {
+const WatchedAudioBook = () => {
+  const {watched,setWatched} = useAppContext();
   const removeWatchedAudioBook = (bookId) => {
     setWatched(() => watched.filter((book) => book._id !== bookId));
   };

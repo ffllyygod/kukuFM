@@ -1,9 +1,12 @@
+import { useAppContext } from "../context/AppContext";
+
 /* eslint-disable react/prop-types */
-const Error = ({ message }) => {
+const Error = () => {
+  const {error} = useAppContext();
   return (
     <div className="error">
       <span>❌</span>
-      <p>{message}</p>
+      <p>{error}</p>
     </div>
   );
 };
